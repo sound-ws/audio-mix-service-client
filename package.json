@@ -1,0 +1,47 @@
+{
+  "name": "@soundws/audio-mix-service-client",
+  "description": "Client for the audio-mix-service",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "version": "0.0.0",
+  "contributors": [
+    {
+      "name": "Mark Cremer",
+      "email": "mark@firstcoders.co.uk",
+      "url": "http://www.firstcoders.co.uk"
+    }
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sound-ws/audio-mix-service-client.git"
+  },
+  "files": [
+    "docs",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md",
+    "src"
+  ],
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.4.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "lint-staged": "^13.0.3"
+  },
+  "dependencies": {
+    "fetch-retry": "^5.0.4",
+    "isomorphic-fetch": "^3.0.0"
+  },
+  "scripts": {
+    "qa": "eslint \"index.js\"",
+    "precommit": "lint-staged"
+  }
+}

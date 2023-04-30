@@ -1,0 +1,13 @@
+{
+  "extends": ["airbnb-base", "prettier"],
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "class-methods-use-this": 0,
+    "prettier/prettier": ["error"],
+    "import/extensions": "off"
+  }
+}
