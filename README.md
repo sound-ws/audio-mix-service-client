@@ -1,18 +1,18 @@
-# sound-ws/sdk
+# soundws/audio-mix-service-client
 
-A mini SDK to interact with the Sound Web Services API.
+A client to interact with the Audio Mix Service
 
 ## Mix Audio
 
 ```js
-import { WebCredentials, Mix } from '@soundws/sdk';
-
-// or in node
-// import { NodeCredentials } from '@soundws/sdk';
-// new NodeCredentials(); // uses SWS_SECRET environment var to generate a token
+import Mix from '@soundws/audio-mix-service-client';
 
 const client = Mix.create({
-  credentials: new WebCredentials({ accessToken: 'aToken' }),
+  fetchOptions: {
+    headers: {
+      Authorization: 'Bearer mytoken',
+    },
+  },
 });
 
 const { url } = await client.createMix({

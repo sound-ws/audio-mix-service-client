@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "license": "MIT",
-  "version": "0.0.0",
+  "version": "0.0.1-beta.0",
   "contributors": [
     {
       "name": "Mark Cremer",
@@ -33,8 +33,8 @@
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1",
-    "lint-staged": "^13.0.3"
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
   },
   "dependencies": {
     "fetch-retry": "^5.0.4",
