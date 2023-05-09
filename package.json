@@ -36,10 +36,6 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1"
   },
-  "dependencies": {
-    "fetch-retry": "^5.0.4",
-    "isomorphic-fetch": "^3.0.0"
-  },
   "scripts": {
     "qa": "eslint \"index.js\"",
     "precommit": "lint-staged"

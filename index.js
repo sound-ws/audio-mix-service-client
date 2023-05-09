@@ -1,6 +1,3 @@
-import 'isomorphic-fetch';
-import fetchRetry from 'fetch-retry';
-
 class AudioMixClient {
   /**
    * @param {Object} params
@@ -51,31 +48,22 @@ class AudioMixClient {
    * @returns {Object} Object containing a url to the generated file
    */
   async poll(src) {
-    const response = await fetchRetry(fetch)(src, {
-      retryOn: async (error, res) => {
-        try {
-          const { job } = await res.clone().json();
-          return (
-            error === null &&
-            res.status === 200 &&
-            ['STATUS_QUEUED', 'STATUS_PROCESSING'].indexOf(job.status) !== -1
-          );
-        } catch (err) {
-          return false;
-        }
-      },
-      retryDelay: 2500,
-      ...this.fetchOptions,
-    });
+    const response = await fetch(src, this.fetchOptions);
 
     // check if the job succeeded
     if (!response.ok) throw new Error('Failed to create mix');
 
     const { job, _url } = await response.json();
 
-    if (job.status !== 'STATUS_SUCCESS') throw Error('Failed to create mix');
+    if (job.status === 'STATUS_QUEUED' || job.status === 'STATUS_PROCESSING') {
+      // eslint-disable-next-line no-promise-executor-return
+      await new Promise((done) => setTimeout(() => done(), 2500));
+      return this.poll(src);
+    }
 
-    return { url: _url };
+    if (job.status === 'STATUS_SUCCESS') return { url: _url };
+
+    throw Error('Failed to create mix');
   }
 }
 
